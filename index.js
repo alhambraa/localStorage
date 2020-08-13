@@ -62,7 +62,7 @@ function listCart(){
     result2 += `<td style="width:125px"> <div class="img2"><img src="${list[i].images}" alt="" /></div> </td>`;
     result2 += `<td> <div id="productName">${list[i].name} </div></td>`;
     result2 += `<td> <div id="price">${list[i].price} </div> </td>`;
-    result2 += `<td> <p><button type="submit" onclick="deleteCart(${list[i].id})" class="btn btn-danger">Delete Item</button> </td>`;
+    result2 += `<td> <p><button type="submit" onclick="deleteCart(${i})" class="btn btn-danger">Delete Item</button> </td>`;
     result2 += '</tr>';
   }
 
@@ -73,7 +73,7 @@ function listCart(){
 
 function deleteCart(id) {
   let list = JSON.parse(localStorage.getItem("productsInCart"))
-  list.splice(list.indexOf(0), id) // Delete dari local storage
+  list.splice(id, 1) // Delete dari local storage
   localStorage.setItem('productsInCart', JSON.stringify(list)); // Set local storage
   location.reload();
 }
